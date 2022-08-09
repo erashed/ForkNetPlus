@@ -1,0 +1,199 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8578,        191]
+NotebookOptionsPosition[      7825,        172]
+NotebookOutlinePosition[      8254,        189]
+CellTagsIndexPosition[      8211,        186]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Epochs", "=", "50"}], ";"}], " "}]], "Input",
+ CellChangeTimes->{{3.753751603214044*^9, 3.753751622479108*^9}, {
+   3.7537516640141077`*^9, 3.753751669858054*^9}, {3.753753957011574*^9, 
+   3.753753974573078*^9}, 3.75590723233488*^9, {3.756162084972871*^9, 
+   3.756162085688817*^9}, 3.756175089935894*^9, {3.7561786608977633`*^9, 
+   3.7561786615510387`*^9}, 3.7570434815170307`*^9, 3.7576539168595667`*^9, {
+   3.75765538571122*^9, 3.7576553903827677`*^9}, 3.7578216692019777`*^9, 
+   3.757829894226021*^9, 3.7578318382521276`*^9, 3.757907151340994*^9, 
+   3.757916060335773*^9, 3.759124105727275*^9, 3.759182180946722*^9, 
+   3.75953695440657*^9, 3.7595506544243593`*^9, {3.75961395954538*^9, 
+   3.7596139622296257`*^9}, {3.75961625062604*^9, 3.759616256848761*^9}, 
+   3.759617160923605*^9, 3.75961747413923*^9, {3.759617807532545*^9, 
+   3.759617809866475*^9}, 3.760219644369536*^9, 3.7602220705293217`*^9, 
+   3.760222442867589*^9, 3.7602233514108686`*^9, {3.7602260154485617`*^9, 
+   3.7602260188455353`*^9}, {3.760226903743425*^9, 3.7602269051134853`*^9}, {
+   3.760227324015276*^9, 3.760227324788589*^9}, 3.760227969305378*^9, 
+   3.760229117370069*^9, {3.76023126921902*^9, 3.7602312697232523`*^9}, 
+   3.760234693538568*^9, 3.76023593888446*^9, 3.7602364554459352`*^9, 
+   3.760236973526524*^9, {3.760238612328189*^9, 3.7602386394941893`*^9}, {
+   3.7602391705049667`*^9, 3.7602391710223083`*^9}, 3.760240901674025*^9, 
+   3.7602429379051037`*^9, 3.766289538943326*^9, {3.7662966533435097`*^9, 
+   3.7662966538034773`*^9}, {3.766350745496222*^9, 3.76635076402287*^9}, 
+   3.7663684261515408`*^9, 3.766371886480372*^9, {3.766452821416992*^9, 
+   3.766452821926868*^9}, 3.7664578500157833`*^9, 3.8667780130113792`*^9, {
+   3.866782005010532*^9, 3.866782005442101*^9}, 3.866833194743029*^9, {
+   3.866837256025786*^9, 3.866837256449448*^9}, 3.8668375081777763`*^9, {
+   3.867784455460869*^9, 3.86778445774471*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"748cebd9-bbff-4832-9d05-3f19bdfd2137"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BS", "=", "4"}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.766450788252494*^9, 3.766457852423574*^9, {3.8668372520262623`*^9, 
+   3.866837252177517*^9}, 3.867783829239749*^9, {3.867784459724414*^9, 
+   3.867784462313347*^9}, {3.8686488272472687`*^9, 3.868648835791689*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"c8f33deb-434e-4cf6-b092-f40bc04dba44"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sub", "=", "\"\<022\>\""}], ";"}]], "Input",
+ CellChangeTimes->{{3.8686488384958477`*^9, 3.868648839983564*^9}, 
+   3.868650084250078*^9},
+ CellLabel->"In[3]:=",ExpressionUUID->"8cf17ca4-65b6-4805-b96f-85d8d3698f53"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ComImg", "[", 
+   RowBox[{
+   "slice_", ",", "mri_", ",", "tissue_", ",", "color_", ",", "val_"}], "]"}],
+   ":=", 
+  RowBox[{"ImageRotate", "[", 
+   RowBox[{"ImageCompose", "[", 
+    RowBox[{
+     RowBox[{"Image", "[", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{
+        RowBox[{"mri", "[", 
+         RowBox[{"[", "slice", "]"}], "]"}], ",", "1"}], "]"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"ImageMultiply", "[", 
+        RowBox[{
+         RowBox[{"Image", "[", 
+          RowBox[{"tissue", "[", 
+           RowBox[{"[", "slice", "]"}], "]"}], "]"}], ",", "color"}], "]"}], 
+       ",", "val"}], "}"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.868656372567656*^9, 3.8686564810067368`*^9}},
+ CellLabel->"In[24]:=",ExpressionUUID->"b37586e4-64ee-4ec5-a347-aa47366d6574"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ResImgShow", "[", 
+   RowBox[{
+   "slice_", ",", "val_", ",", "mri_", ",", "tissue1_", ",", "tissue2_", ",", 
+    "tissue3_", ",", "tissue4_", ",", "tissue5_", ",", "tissue6_", ",", 
+    "tissue7_", ",", "tissue8_", ",", "tissue9_", ",", "tissue10_", ",", 
+    "tissue11_", ",", "tissue12_", ",", "tissue13_", ",", "tissue14_", ",", 
+    "tissue15_"}], "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"ImageCollage", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue1", ",", "Red", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue2", ",", "Green", ",", "val"}],
+       "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue3", ",", "Blue", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{
+      "slice", ",", "mri", ",", "tissue4", ",", "Yellow", ",", "val"}], "]"}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue5", ",", "Cyan", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{
+      "slice", ",", "mri", ",", "tissue6", ",", "Magenta", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{
+      "slice", ",", "mri", ",", "tissue7", ",", "Orange", ",", "val"}], "]"}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue8", ",", "Pink", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue9", ",", "Red", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{
+      "slice", ",", "mri", ",", "tissue10", ",", "Green", ",", "val"}], "]"}],
+      ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue11", ",", "Blue", ",", "val"}],
+       "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{
+      "slice", ",", "mri", ",", "tissue12", ",", "Yellow", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{"slice", ",", "mri", ",", "tissue13", ",", "Cyan", ",", "val"}],
+       "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{
+      "slice", ",", "mri", ",", "tissue14", ",", "Magenta", ",", "val"}], 
+      "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"ComImg", "[", 
+      RowBox[{
+      "slice", ",", "mri", ",", "tissue15", ",", "Orange", ",", "val"}], 
+      "]"}]}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8686507881211863`*^9, 3.868650833247293*^9}, 
+   3.868650868513146*^9, {3.868650921976836*^9, 3.868650971998914*^9}, {
+   3.8686510132721243`*^9, 3.868651050478792*^9}, {3.8686523881382723`*^9, 
+   3.868652438366756*^9}, {3.868652481537342*^9, 3.868652521302527*^9}, 
+   3.8686525955836906`*^9, {3.868653097803103*^9, 3.868653114187241*^9}, {
+   3.868653637553446*^9, 3.868653775306816*^9}, {3.868653906345481*^9, 
+   3.86865395720014*^9}, {3.868655510087791*^9, 3.868655534903241*^9}, {
+   3.868655575818624*^9, 3.868655635639882*^9}, {3.868655705617445*^9, 
+   3.868655706391117*^9}, {3.868655795827656*^9, 3.868655801079372*^9}, {
+   3.868656097332411*^9, 3.8686562097086277`*^9}, {3.868656249147709*^9, 
+   3.8686563449478073`*^9}, {3.8686564894995213`*^9, 
+   3.8686568134453382`*^9}, {3.8686568559000893`*^9, 
+   3.868656887643282*^9}},ExpressionUUID->"896b2b06-4fa8-4b9c-ae16-\
+4bb0609432aa"]
+},
+WindowSize->{606., 659.25},
+WindowMargins->{{363, Automatic}, {48, Automatic}},
+Magnification:>0.75 Inherited,
+FrontEndVersion->"13.0 for Linux x86 (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"463d4dec-7ea8-45fd-b639-2ac7e2048d78"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2048, 30, 22, "Input",ExpressionUUID->"748cebd9-bbff-4832-9d05-3f19bdfd2137"],
+Cell[2609, 52, 385, 7, 22, "Input",ExpressionUUID->"c8f33deb-434e-4cf6-b092-f40bc04dba44"],
+Cell[2997, 61, 251, 5, 22, "Input",ExpressionUUID->"8cf17ca4-65b6-4805-b96f-85d8d3698f53"],
+Cell[3251, 68, 844, 23, 55, "Input",ExpressionUUID->"b37586e4-64ee-4ec5-a347-aa47366d6574"],
+Cell[4098, 93, 3723, 77, 294, "Input",ExpressionUUID->"896b2b06-4fa8-4b9c-ae16-4bb0609432aa"]
+}
+]
+*)
+
